@@ -41,6 +41,8 @@ public class TinderSwipeView <Element>: UIView {
     fileprivate let contentView: ContentView?
     public typealias ContentView = (_ index: Int, _ frame: CGRect, _ element:Element) -> (UIView)
     
+    public var shouldDisplayCardOverlay = true
+    
     public init(frame: CGRect,
                 contentView: @escaping ContentView, bufferSize : Int = 3) {
         self.contentView = contentView
@@ -107,6 +109,7 @@ public class TinderSwipeView <Element>: UIView {
         card.delegate = self
         card.model = element
         card.addContentView(view: (self.contentView?(index, card.bounds, element)))
+        card.shouldDisplayCardOverlay = shouldDisplayCardOverlay
         return card
     }
     

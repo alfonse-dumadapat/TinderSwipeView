@@ -44,6 +44,7 @@ class TinderCard: UIView {
     var yCenter: CGFloat = 0.0
     var originalPoint = CGPoint.zero
     
+    var shouldDisplayCardOverlay = true
     var isLiked = false
     var model : Any?
     
@@ -326,6 +327,7 @@ extension TinderCard: UIGestureRecognizerDelegate {
      * Updating overlay methods
      */
     fileprivate func updateOverlay(_ distance: CGFloat) {
+        guard shouldDisplayCardOverlay else { return }
         
         statusImageView.image = makeImage(name:  distance > 0 ? "ic_like" : "ic_skip")
         overlayImageView.image = makeImage(name:  distance > 0 ? "overlay_like" : "overlay_skip")
