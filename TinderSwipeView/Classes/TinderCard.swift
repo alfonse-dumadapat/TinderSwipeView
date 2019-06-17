@@ -327,12 +327,12 @@ extension TinderCard: UIGestureRecognizerDelegate {
      * Updating overlay methods
      */
     fileprivate func updateOverlay(_ distance: CGFloat) {
+        delegate?.currentCardStatus(card: self, distance: distance)
         guard shouldDisplayCardOverlay else { return }
         
         statusImageView.image = makeImage(name:  distance > 0 ? "ic_like" : "ic_skip")
         overlayImageView.image = makeImage(name:  distance > 0 ? "overlay_like" : "overlay_skip")
         statusImageView.alpha = min(abs(distance) / 100, 0.8)
         overlayImageView.alpha = min(abs(distance) / 100, 0.8)
-        delegate?.currentCardStatus(card: self, distance: distance)
     }
 }
