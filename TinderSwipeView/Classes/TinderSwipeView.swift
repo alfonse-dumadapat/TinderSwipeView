@@ -229,7 +229,7 @@ extension TinderSwipeView : TinderCardDelegate {
     }
     
     func fallbackCard(card: TinderCard) {
-        self.delegate?.fallbackCard(model: card.model!)
+        self.delegate?.fallbackCard(model: card)
     }
     
     func cardGoesRight(card: TinderCard) {
